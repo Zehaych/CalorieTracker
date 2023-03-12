@@ -6,12 +6,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // Screens
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import UserScreen from './screens/UserScreen';
+import TDEEScreen from './screens/TDEEScreen';
 
 //Screen names
 const homeName = "Home";
 const detailsName = "Details";
-const settingsName = "Settings";
+const userName = "User";
+const tdeeName = "TDEE";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,8 +33,11 @@ function MainContainer() {
             } else if (rn === detailsName) {
               iconName = focused ? 'list' : 'list-outline';
 
-            } else if (rn === settingsName) {
-              iconName = focused ? 'settings' : 'settings-outline';
+            } else if (rn === tdeeName){
+              iconName = focused ? 'md-barbell' : 'md-barbell';
+              
+            } else if (rn === userName) {
+              iconName = focused ? 'person' : 'person';
             }
 
             // You can return any component that you like here
@@ -48,7 +53,8 @@ function MainContainer() {
 
         <Tab.Screen name={homeName} component={HomeScreen} />
         <Tab.Screen name={detailsName} component={DetailsScreen} />
-        <Tab.Screen name={settingsName} component={SettingsScreen} />
+        <Tab.Screen name={tdeeName} component = {TDEEScreen} />
+        <Tab.Screen name={userName} component={UserScreen} />
 
       </Tab.Navigator>
     </NavigationContainer>
