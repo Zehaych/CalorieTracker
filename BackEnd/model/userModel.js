@@ -12,6 +12,15 @@ const userSchema = mongoose.Schema(
       minLength: 6,
       required: true,
     },
+    history: [
+      {
+        date: Date,
+        calorie: Number,
+        fat: Number,
+        protein: Number,
+        carbs: Number,
+      },
+    ],
   },
   {
     timestamps: true,
