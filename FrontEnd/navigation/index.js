@@ -10,6 +10,7 @@ import NewPasswordScreen from "./screens/NewPasswordScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
+import AddFoodScreen from "./screens/AddFoodScreen";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,7 @@ const Navigation = () => {
       />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+      <Stack.Screen name="AddFood" component={AddFoodScreen} />
     </Stack.Navigator>
   );
 };

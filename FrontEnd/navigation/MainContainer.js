@@ -1,22 +1,25 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 // Screens
-import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
-import UserScreen from './screens/UserScreen';
-import TDEEScreen from './screens/TDEEScreen';
+import HomeScreen from "./screens/HomeScreen";
+import TDEEScreen from "./screens/TDEEScreen";
+import Navigation from ".";
+import ProfileScreen from "./screens/ProfileScreen";
+
+// import Icon from "react-native-vector-icons/Ionicons";
 
 //Screen names
 const homeName = "Home";
-const detailsName = "Details";
+const TDEEName = "TDEE Calculator";
 const userName = "User";
-const tdeeName = "TDEE";
 
 const Tab = createBottomTabNavigator();
-
+// const Stack = createNativeStackNavigator();
+// const ProfileStack = createNativeStackNavigator();
 function MainContainer() {
   return (
     <NavigationContainer>
@@ -28,16 +31,11 @@ function MainContainer() {
             let rn = route.name;
 
             if (rn === homeName) {
-              iconName = focused ? 'home' : 'home-outline';
-
-            } else if (rn === detailsName) {
-              iconName = focused ? 'list' : 'list-outline';
-
-            } else if (rn === tdeeName){
-              iconName = focused ? 'md-barbell' : 'md-barbell';
-              
+              iconName = focused ? "home" : "home-outline";
+            } else if (rn === TDEEName) {
+              iconName = focused ? "calculator" : "calculator-outline";
             } else if (rn === userName) {
-              iconName = focused ? 'person' : 'person';
+              iconName = focused ? "person" : "person-outline";
             }
 
             // You can return any component that you like here
@@ -45,20 +43,58 @@ function MainContainer() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'grey',
+          activeTintColor: "tomato",
+          inactiveTintColor: "grey",
           labelStyle: { paddingBottom: 10, fontSize: 10 },
-          style: { padding: 10, height: 70}
-        }}>
-
+          style: { padding: 10, height: 70 },
+        }}
+      >
         <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={detailsName} component={DetailsScreen} />
-        <Tab.Screen name={tdeeName} component = {TDEEScreen} />
-        <Tab.Screen name={userName} component={UserScreen} />
-
+        <Tab.Screen name={TDEEName} component={TDEEScreen} />
+        <Tab.Screen name={userName} component={Navigation} />
+        {/* <Tab.Screen
+          name="Profile"
+          component={ProfileStackScreen}
+          options={{
+            tabBarLabel: "Profile",
+            tabBarColor: "#694fad",
+            tabBarIcon: ({ color }) => (
+              <Icon name="ios-person" color={color} size={26} />
+            ),
+          }}
+        /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
 export default MainContainer;
+
+// const ProfileStackScreen = ({ navigation }) => {
+//   <ProfileStack.Navigator
+//     screenOptions={{
+//       headerStyle: {
+//         backgroundColor: "#fff",
+//       },
+//       headerTintColor: "#000",
+//       headerTitleStyle: {
+//         fontWeight: "bold",
+//       },
+//     }}
+//   >
+//     <ProfileStack.Screen
+//       name="Profile"
+//       component={ProfileScreen}
+//       options={{
+//         headerLeft: () => (
+//           <Icon.Button
+//             name="ios-menu"
+//             size={25}
+//             backgroundColor="#000"
+//             onPress={() => navigation.openDrawer()}
+//           />
+//         ),
+//       }}
+//     />
+//   </ProfileStack.Navigator>;
+// };

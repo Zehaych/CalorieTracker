@@ -26,6 +26,11 @@ const ProfileScreen = () => {
   const onEditProfilePressed = () => {
     navigation.navigate("EditProfile");
   };
+
+  const onAddFoodPressed = () => {
+    navigation.navigate("AddFood");
+  };
+
   // const onEditProfilePressed = () => {
   //   navigation.navigate("EditProfile");
   // };
@@ -91,16 +96,10 @@ const ProfileScreen = () => {
             <Text style={styles.menuItemText}>Edit Profile</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={onAddFoodPressed}>
           <View style={styles.menuItem}>
             <Icon name="database-plus" color="#FF6347" size={25} />
             <Text style={styles.menuItemText}>Add food</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="database-minus" color="#FF6347" size={25} />
-            <Text style={styles.menuItemText}>Delete food</Text>
           </View>
         </TouchableRipple>
 
